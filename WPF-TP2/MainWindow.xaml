@@ -1,0 +1,53 @@
+﻿<Window x:Class="WPF_TP2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_TP2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <DockPanel Grid.ColumnSpan="2" VerticalAlignment="Top">
+            <Menu>
+                <MenuItem Header="Start">
+                    <MenuItem Name="StartBallon" Header="Start Ballon" Click="StartBallon_Click"></MenuItem>
+                    <MenuItem Name="StartPremier" Header="Start Premier" Click="StartPremier_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Remove">
+                    <MenuItem Name="LastOne" Header="Last one" Click="LastOne_Click"></MenuItem>
+                    <MenuItem Name="LastBallon" Header="Last ballon" Click="LastBallon_Click"></MenuItem>
+                    <MenuItem Name="LastPremier" Header="Last premier" Click="LastPremier_Click"></MenuItem>
+                    <MenuItem Name="All" Header="All" Click="All_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Display">
+                    <MenuItem Name="ShowHideBallonPID" Header="Show ballon PID" IsCheckable="True" IsChecked="True" Click="ShowHideBallonPID_Click"></MenuItem>
+                    <MenuItem Name="ShowHidePremierPID" Header="Show premier PID" IsCheckable="True" IsChecked="True" Click="ShowHidePremierPID_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Name="Exit" Header="Exit" Click="Exit_Click"></MenuItem>
+            </Menu>
+        </DockPanel>
+
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" Margin="0,50,0,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="NbBallons" Text="{Binding ballons.Count}"></TextBlock>
+                <TextBlock Text=" process of 'ballon' running"></TextBlock>
+            </StackPanel>
+            <ListView x:Name="BallonPIDListView" BorderBrush="Transparent" ItemsSource="{Binding ballons}">
+            </ListView>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" Margin="0,50,0,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="NbPremiers" Text="{Binding premiers.Count}"></TextBlock>
+                <TextBlock Text=" process of 'premier' running"></TextBlock>
+            </StackPanel>
+            <ListView Name="PremierPIDListView" BorderBrush="Transparent" ItemsSource="{Binding premiers}"></ListView>
+        </StackPanel>
+    </Grid>
+</Window>
